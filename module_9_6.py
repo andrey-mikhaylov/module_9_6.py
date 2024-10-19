@@ -1,5 +1,30 @@
+from itertools import combinations
+
+
+def all_variants(text: str):
+    """
+    Генератор
+    :param text: строка
+    :return: объект-генератор, при каждой итерации которого будет возвращаться подпоследовательности переданной строки
+    """
+    for i in range(len(text)):
+        for result in combinations(text, i+1):
+            yield ''.join(result)
+
+
 def test():
-    pass
+    a = all_variants("abc")
+    for i in a:
+        print(i)
+    """
+    Вывод на консоль:
+    a
+    b
+    c
+    ab
+    bc
+    abc
+    """
 
 
 if __name__ == '__main__':
