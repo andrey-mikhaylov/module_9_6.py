@@ -1,15 +1,13 @@
-from itertools import combinations
-
-
 def all_variants(text: str):
     """
-    Генератор
+    Генератор подпоследовательностей
     :param text: строка
     :return: объект-генератор, при каждой итерации которого будет возвращаться подпоследовательности переданной строки
     """
-    for i in range(len(text)):
-        for result in combinations(text, i+1):
-            yield ''.join(result)
+    for cnt in range(len(text)):
+        for start in range(len(text)-cnt):
+            result = text[start:start+cnt+1]
+            yield result
 
 
 def test():
